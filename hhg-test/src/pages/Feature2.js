@@ -17,6 +17,7 @@ import SearchBar from "../components/SearchBar";
 const Feature2 = () => {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+
   const limit = 5;
 
   const employees = useSelector((state) => state.employee.employees);
@@ -33,7 +34,7 @@ const Feature2 = () => {
     e.preventDefault(e);
     setSearchTerm(searchTerm);
   };
-
+  
   useEffect(() => {
     dispatch(employeeAction.getTotalResults())
     dispatch(employeeAction.getEmployees(page, limit,searchTerm));
@@ -41,8 +42,8 @@ const Feature2 = () => {
 
   return (
     <div>
-      <Container className="mt-5 w-75">
-        <div><h3>EMPLOYEES</h3></div>
+      <Container style={{minHeight:"100vh"}} className="mt-5">
+        <div><h3  className="mb-5">EMPLOYEES</h3></div>
         <div className="text-left mb-5">
           <SearchBar
             searchInput={searchTerm}
@@ -94,8 +95,9 @@ const Feature2 = () => {
             </tbody>
           ))}
         </Table>
+        <PaginationBar page={page} setPage={setPage} totalPages={totalPages} />
+
       </Container>
-      <PaginationBar page={page} setPage={setPage} totalPages={totalPages} />
     </div>
   );
 };

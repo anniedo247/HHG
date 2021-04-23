@@ -6,6 +6,7 @@ const getEmployees = (page,limit,searchTerm)=> async (dispatch) => {
   dispatch({ type: types.GET_EMPLOYEES_REQUEST, payload: null });
   try {
     let url = `/employees?page=${page}&limit=${limit}`
+    
     if(searchTerm) {
       url = url + `&search=${searchTerm}`
     }
