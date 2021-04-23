@@ -1,6 +1,7 @@
 import * as types from "../constants/employee.constants"
 import api from "../apiService"
 
+
 const getEmployees = (page,limit,searchTerm)=> async (dispatch) => {
   dispatch({ type: types.GET_EMPLOYEES_REQUEST, payload: null });
   try {
@@ -17,4 +18,14 @@ const getEmployees = (page,limit,searchTerm)=> async (dispatch) => {
   }
 };
 
-export default getEmployees;
+const getTotalResults = ()=> async (dispatch) => {   
+    const res = await api.get(`/employees`);
+    console.log("ressssss",res.data.count)
+      dispatch({ type: types.GET_TOTAL_RESULTS, payload: res.data });  
+};
+
+const employeeAction = {
+  getEmployees,
+  getTotalResults,
+}
+export default employeeAction;

@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import Moment from "react-moment";
 
-import getEmployees from "../redux/actions/employee.actions";
+import employeeAction from "../redux/actions/employee.actions";
 import PaginationBar from "../components/PaginationBar";
 import SearchBar from "../components/SearchBar";
 
@@ -20,10 +20,10 @@ const Feature2 = () => {
   const limit = 5;
 
   const employees = useSelector((state) => state.employee.employees);
-  console.log("e", employees);
-  const totalPages = 5
-  console.log(totalPages);
-
+  const totalResults = useSelector((state)=> state.employee.totalResults)
+  
+  const totalPages = Math.ceil(totalResults/limit)
+  
   const dispatch = useDispatch();
 
   const onChange = (e) => {
@@ -35,7 +35,8 @@ const Feature2 = () => {
   };
 
   useEffect(() => {
-    dispatch(getEmployees(page, limit,searchTerm));
+    dispatch(employeeAction.getTotalResults())
+    dispatch(employeeAction.getEmployees(page, limit,searchTerm));
   }, [dispatch, page, limit,searchTerm]);
 
   return (
@@ -76,8 +77,12 @@ const Feature2 = () => {
           </thead>
           {employees.map((e) => (
             <tbody >
-              <tr>
-                <td>
+              <tr style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "17px",
+                  fontWeight: "200",
+                }}>
+                <td  >
                   <h5>{e.name}</h5>
                 </td>
                 <td>{e.email}</td>

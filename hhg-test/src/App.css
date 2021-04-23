@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
 /*font-family: 'Roboto Condensed', sans-serif;*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+/*font-family: 'Montserrat', sans-serif;*/
 
 /*-------searchBar--------*/
 .search-bar {
@@ -22,7 +24,7 @@
 
 .btn {
   width: 100px;
-  background-color: rgb(124, 179, 52)!important;
+  background-color: rgb(45, 135, 243)!important;
   color: white !important;
   margin-top: 50px;
  font-family: 'Roboto Condensed', sans-serif;
@@ -31,15 +33,24 @@
 }
 .btn:hover {
   background-color: white !important;
-  color: rgb(124, 179, 52)!important;
-  border: 1px solid  rgb(124, 179, 52)!important;
+  color: rgb(45, 135, 243)!important;
+  border: 1px solid  rgb(45, 135, 243)!important;
 }
 .feature1 {
-  border: 1px solid  rgb(124, 179, 52);
+  border: 1px solid  rgb(45, 135, 243);
   width: 400px !important;
   padding-top: 30px;
   padding-bottom: 30px;
 }
 .table-hover tbody tr:hover td {
-  background: rgb(124, 179, 52);
+  background:rgb(45, 135, 243)
+}
+
+.MuiPaginationItem-page.Mui-selected {
+  background-color: rgb(45, 135, 243) !important;
+  color: white;
+  border: none;
+}
+.MuiPaginationItem-root {
+ 
 }
